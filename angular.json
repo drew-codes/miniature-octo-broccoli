@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "synced-clocks"
+    }
+  },
+  "defaultProject": "synced-clocks",
+  "cli": {
+    "analytics": false
+  }
 }
