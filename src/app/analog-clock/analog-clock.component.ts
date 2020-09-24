@@ -7,11 +7,11 @@ interface HandAngles {
 }
 
 @Component({
-  selector: 'app-clock',
-  templateUrl: './clock.component.html',
-  styleUrls: ['./clock.component.scss'],
+  selector: 'app-analog-clock',
+  templateUrl: './analog-clock.component.html',
+  styleUrls: ['./analog-clock.component.scss'],
 })
-export class ClockComponent implements OnInit {
+export class AnalogClockComponent implements OnInit {
   @Input() set time(timeString: string) {
     const regex = RegExp(/^(?:(?:([01]?\d|2[0-3]):)?([0-5]?\d):)?([0-5]?\d)$/g);
     const isValidTimeString = regex.test(timeString);
