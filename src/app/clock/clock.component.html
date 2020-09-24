@@ -1,11 +1,11 @@
 <article class="clock simple">
   <div class="hours-container">
-    <div class="hours"></div>
+    <div class="hours" [style.transform]="'rotateZ('+ clockHands.hours +'deg)'"></div>
   </div>
   <div class="minutes-container">
-    <div class="minutes"></div>
+    <div class="minutes" [style.transform]="'rotateZ('+ clockHands.minutes +'deg)'"></div>
   </div>
   <div class="seconds-container">
-    <div class="seconds"></div>
+    <div class="seconds" [style.transform]="'rotateZ('+ clockHands.seconds +'deg)'"></div>
   </div>
 </article>
