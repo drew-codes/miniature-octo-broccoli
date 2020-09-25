@@ -11,7 +11,7 @@ export class DigitalClockComponent implements OnInit {
     const isValidTimeString = regex.test(timeString);
 
     if (!isValidTimeString) {
-      console.error(
+      console.warn(
         '[DIGITAL CLOCK COMPONENT] Invalid time input. Must be a valid time and format should match HH:mm:ss. Defaulting to system time.'
       );
       this.useSystemTime();
