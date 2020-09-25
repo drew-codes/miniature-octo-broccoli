@@ -24,7 +24,6 @@ export class AnalogClockComponent implements OnInit {
     } else {
       this.useInputTime(timeString);
     }
-
   }
 
   @Output() onTimeChange = new EventEmitter<string>();
@@ -35,22 +34,18 @@ export class AnalogClockComponent implements OnInit {
   private isTimeInit: boolean;
 
   ngOnInit(): void {
-    if(!this.isTimeInit) {
+    if (!this.isTimeInit) {
       this.useSystemTime();
     }
   }
 
   private useInputTime(time: string): void {
-    const [stringHours, stringMinutes, stringSeconds]: Array<string> = time.split(':');
-    const hours = parseInt(stringHours);
-    const minutes = parseInt(stringMinutes);
-    const seconds = parseInt(stringSeconds);
-    this.stopHands = true;
-    this.clockHands = this.getAnglesFromTime(hours,minutes, seconds);
-    setTimeout(() => {
-      this.stopHands = false;
-    }, 10)
-    this.isTimeInit = true;
+    const [
+      stringHours,
+      stringMinutes,
+      stringSeconds,
+    ]: Array<string> = time.split(':');
+    this.setHands(+stringHours, +stringMinutes, + stringSeconds);
   }
 
   private useSystemTime(): void {
@@ -58,12 +53,7 @@ export class AnalogClockComponent implements OnInit {
     const hours = currentTime.getHours();
     const minutes = currentTime.getMinutes();
     const seconds = currentTime.getSeconds();
-    this.stopHands = true;
-    this.clockHands = this.getAnglesFromTime(hours, minutes, seconds);
-    setTimeout(() => {
-      this.stopHands = false;
-    }, 10)
-    this.isTimeInit = true;
+    this.setHands(hours, minutes, seconds);
   }
 
   private getAnglesFromTime(
@@ -72,9 +62,22 @@ export class AnalogClockComponent implements OnInit {
     seconds: number
   ): HandAngles {
     return {
-      hours: (hours * 30) + (minutes / 2),
-      minutes: (minutes * 6),
-      seconds: (seconds * 6)
+      hours: hours * 30 + minutes / 2,
+      minutes: minutes * 6,
+      seconds: seconds * 6,
     };
+  }
+
+  private setHands(
+    hours: string | number,
+    minutes: string | number,
+    seconds: string | number
+  ) {
+    this.stopHands = true;
+    this.clockHands = this.getAnglesFromTime(+hours, +minutes, +seconds);
+    setTimeout(() => {
+      this.stopHands = false;
+    }, 10);
+    this.isTimeInit = true;
   }
 }
