@@ -1,0 +1,15 @@
+.time-input {
+  display: flex;
+  input {
+    width: 30px;
+    padding: 0.5rem;
+    margin-right: 0.5rem;
+  }
+  button {
+    background: red;
+    color: white;
+    border: 0;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+  }
+}

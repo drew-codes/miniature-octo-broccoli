@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-digital-clock',
@@ -12,13 +12,15 @@ export class DigitalClockComponent implements OnInit {
 
     if (!isValidTimeString) {
       console.error(
-        '[CLOCK COMPONENT] Invalid time input. Must be a valid time and format should match HH:mm:ss. Defaulting to system time.'
+        '[DIGITAL CLOCK COMPONENT] Invalid time input. Must be a valid time and format should match HH:mm:ss. Defaulting to system time.'
       );
       this.useSystemTime();
     } else {
       this.useInputTime(timeString);
     }
   }
+
+  @Output() onTimeChange = new EventEmitter<string>();
 
   
   public currentTime: string;

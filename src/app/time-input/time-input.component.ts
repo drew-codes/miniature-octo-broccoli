@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-time-input',
@@ -9,6 +9,7 @@ export class TimeInputComponent implements OnInit {
 
   constructor() { }
 
+  @Output() onTimeChange = new EventEmitter<string>();
   public hours: string;
   public minutes: string;
   public seconds: string;
@@ -17,7 +18,11 @@ export class TimeInputComponent implements OnInit {
   }
 
   public setTime() {
-
+    const newTime = `${this.hours}:${this.minutes}:${this.seconds}`;
+    this.onTimeChange.emit(newTime);
+    this.hours = '';
+    this.minutes = '';
+    this.seconds = '';
   }
 
 }

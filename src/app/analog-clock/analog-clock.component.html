@@ -1,11 +1,26 @@
-<article class="clock simple">
-  <div class="hours-container">
-    <div class="hours" [style.transform]="'rotateZ('+ clockHands.hours +'deg)'"></div>
-  </div>
-  <div class="minutes-container">
-    <div class="minutes" [style.transform]="'rotateZ('+ clockHands.minutes +'deg)'"></div>
-  </div>
-  <div class="seconds-container">
-    <div class="seconds" [style.transform]="'rotateZ('+ clockHands.seconds +'deg)'"></div>
-  </div>
-</article>
+<div class="flex-center-column analog-clock">
+  <article class="clock simple">
+    <div class="hours-container" [ngClass]="{'stop-animation': stopHands}">
+      <div
+        class="hours"
+        [style.transform]="'rotateZ(' + clockHands.hours + 'deg)'"
+      ></div>
+    </div>
+    <div class="minutes-container" [ngClass]="{'stop-animation': stopHands}">
+      <div
+        class="minutes"
+        [style.transform]="'rotateZ(' + clockHands.minutes + 'deg)'"
+      ></div>
+    </div>
+    <div class="seconds-container" [ngClass]="{'stop-animation': stopHands}">
+      <div
+        class="seconds"
+        [style.transform]="'rotateZ(' + clockHands.seconds + 'deg)'"
+      ></div>
+    </div>
+  </article>
+  <app-time-input
+    (onTimeChange)="this.onTimeChange.emit($event)"
+  ></app-time-input>
+</div>
+

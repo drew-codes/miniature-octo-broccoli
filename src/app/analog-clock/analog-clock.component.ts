@@ -18,7 +18,7 @@ export class AnalogClockComponent implements OnInit {
 
     if (!isValidTimeString) {
       console.error(
-        '[CLOCK COMPONENT] Invalid time input. Must be a valid time and format should match HH:mm:ss. Defaulting to system time.'
+        '[ANALOG CLOCK COMPONENT] Invalid time input. Must be a valid time and format should match HH:mm:ss. Defaulting to system time.'
       );
       this.useSystemTime();
     } else {
@@ -31,6 +31,7 @@ export class AnalogClockComponent implements OnInit {
   constructor() {}
 
   public clockHands: HandAngles;
+  public stopHands: boolean;
   private isTimeInit: boolean;
 
   ngOnInit(): void {
@@ -44,8 +45,11 @@ export class AnalogClockComponent implements OnInit {
     const hours = parseInt(stringHours);
     const minutes = parseInt(stringMinutes);
     const seconds = parseInt(stringSeconds);
-
+    this.stopHands = true;
     this.clockHands = this.getAnglesFromTime(hours,minutes, seconds);
+    setTimeout(() => {
+      this.stopHands = false;
+    }, 10)
     this.isTimeInit = true;
   }
 
@@ -54,8 +58,11 @@ export class AnalogClockComponent implements OnInit {
     const hours = currentTime.getHours();
     const minutes = currentTime.getMinutes();
     const seconds = currentTime.getSeconds();
-
+    this.stopHands = true;
     this.clockHands = this.getAnglesFromTime(hours, minutes, seconds);
+    setTimeout(() => {
+      this.stopHands = false;
+    }, 10)
     this.isTimeInit = true;
   }
 
@@ -66,8 +73,8 @@ export class AnalogClockComponent implements OnInit {
   ): HandAngles {
     return {
       hours: (hours * 30) + (minutes / 2),
-      minutes: minutes * 6,
-      seconds: seconds * 6,
+      minutes: (minutes * 6),
+      seconds: (seconds * 6)
     };
   }
 }

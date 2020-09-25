@@ -1,3 +1,6 @@
+.analog-clock {
+  width: 20rem;
+}
 .clock {
   border-radius: 50%;
   background: #fff url(../../assets/ios_clock.svg) no-repeat center;
@@ -5,6 +8,7 @@
   height: 20em;
   position: relative;
   width: 20em;
+  margin-bottom: 2rem;
 }
 
 .clock.simple:after {
@@ -66,7 +70,11 @@
   animation: rotate 3600s infinite steps(60);
 }
 .seconds-container {
-  animation: rotate 60s infinite steps(60);
+  animation: rotate 60s infinite steps(60); 
+}
+
+.stop-animation {
+  animation: none;
 }
 
 @keyframes rotate {

@@ -1,2 +1,4 @@
-<p>{{currentTime}}</p>
-<app-time-input></app-time-input>
+<div class="flex-center-column digital-clock">
+  <p>{{currentTime}}</p>
+  <app-time-input (onTimeChange)="this.onTimeChange.emit($event)"></app-time-input>
+</div>

@@ -1,4 +1,11 @@
-p {
-  font-family: monospace;
-  font-size: 3rem;
+.digital-clock {
+  width: 20rem;
+  p {
+    font-family: monospace;
+    font-size: 3rem;
+    height: 20rem;
+    margin: 0 0 2rem;
+    display: flex;
+    align-items: center;
+  }
 }
